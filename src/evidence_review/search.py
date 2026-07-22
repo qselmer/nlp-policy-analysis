@@ -95,3 +95,25 @@ def build_standard_queries(strategy: dict) -> list[SearchQuery]:
             )
         )
     return queries
+
+
+def standard_queries_to_records(queries: Iterable[SearchQuery]) -> list[dict[str, str]]:
+    """Convert generated queries into stable tabular records.
+
+    These records describe planned conceptual queries. They are not evidence that a
+    search has been executed in any database. Actual executions belong in the search
+    log and must record platform-specific syntax, date, filters, and result counts.
+    """
+    records: list[dict[str, str]] = []
+    for item in queries:
+        query_id = f"{item.language}_{item.query_type}"
+        records.append(
+            {
+                "query_id": query_id,
+                "language": item.language,
+                "query_type": item.query_type,
+                "blocks": " + ".join(item.blocks),
+                "exact_query": item.query,
+            }
+        )
+    return records
