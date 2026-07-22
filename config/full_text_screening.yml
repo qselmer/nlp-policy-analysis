@@ -1,0 +1,135 @@
+screening_stage: full_text
+
+paths:
+  corpus_csv: data/interim/full_text_screening_corpus.csv
+  chunks_csv: data/interim/document_chunks.csv
+  retrieval_metadata_csv: data/interim/full_text_retrieval_working.csv
+  working_csv: data/interim/full_text_screening_working.csv
+  packet_csv: data/interim/full_text_screening_packets.csv
+  prompts_jsonl: data/interim/full_text_screening_prompts.jsonl
+  model_decisions_jsonl: data/interim/full_text_screening_model_decisions.jsonl
+  issues_csv: data/interim/full_text_screening_issues.csv
+  decisions_csv: data/interim/full_text_screening_decisions.csv
+  included_csv: data/interim/full_text_included.csv
+  excluded_csv: data/interim/full_text_excluded.csv
+  uncertain_csv: data/interim/full_text_uncertain.csv
+  pending_csv: data/interim/full_text_pending.csv
+  exclusion_log_csv: data/interim/full_text_exclusion_log.csv
+  flow_summary_csv: data/interim/full_text_screening_flow.csv
+  evidence_extraction_corpus_csv: data/interim/evidence_extraction_corpus.csv
+
+operational_rule:
+  include: all_scope_criteria_yes_and_full_text_sufficient
+  exclude: at_least_one_scope_criterion_no_or_valid_administrative_exclusion
+  uncertain: no_scope_criterion_no_and_at_least_one_criterion_unclear
+  access_note: insufficient_or_unreadable_text_is_uncertain_not_automatically_excluded
+
+eligibility_criteria:
+  fisheries_or_marine_relevant:
+    question: Does the full text concern marine capture fisheries, fishery governance, marine fish stocks, forage fish, small pelagics, or a directly relevant marine ecosystem?
+  climate_environment_or_adaptation_element:
+    question: Does the full text contain a substantive climate, environmental variability, extreme-event, ecosystem, precautionary, adaptation, resilience, or climate-risk element?
+  contributes_codable_evidence:
+    question: Does the full text provide at least one locatable result, projection, mechanism, method, management measure, evaluation, recommendation, implementation lesson, policy commitment, or evidence gap?
+  sufficient_full_text_for_verification:
+    question: Is enough readable text available to verify the eligibility decision and record exact page locators?
+
+criterion_values:
+  - "yes"
+  - "no"
+  - "unclear"
+
+decisions:
+  - include
+  - exclude
+  - uncertain
+
+eligibility_exclusion_reasons:
+  - not_marine_or_fisheries
+  - no_climate_environment_adaptation_element
+  - no_codable_evidence
+  - freshwater_only
+  - aquaculture_only
+  - terrestrial_only
+  - climate_mitigation_without_fisheries_link
+  - other_scope_exclusion
+
+administrative_exclusion_reasons:
+  - duplicate_record
+  - superseded_version
+  - wrong_document
+  - publication_type_not_eligible
+  - outside_date_range
+
+priority_groups:
+  - anchoveta_direct
+  - small_pelagics_or_forage_fish
+  - marine_fisheries
+  - management_governance
+  - climate_hazard
+  - ecological_response
+  - fishery_response
+  - management_option
+  - implementation_project
+  - policy_legal
+  - methods_data
+  - socioeconomic_adaptation
+
+human_validation_status:
+  - not_reviewed
+  - accepted
+  - corrected
+  - rejected
+
+packet_selection:
+  max_chunks_per_source: 12
+  max_characters_per_source: 50000
+  edge_chunks: 2
+  spread_chunks: 4
+  keyword_terms:
+    - climate
+    - warming
+    - temperature
+    - variability
+    - ENSO
+    - El Niño
+    - La Niña
+    - marine heatwave
+    - acidification
+    - deoxygenation
+    - hypoxia
+    - regime shift
+    - adaptation
+    - resilience
+    - precautionary
+    - ecosystem approach
+    - fishery
+    - fisheries
+    - stock
+    - catch
+    - effort
+    - recruitment
+    - biomass
+    - distribution
+    - management
+    - governance
+    - policy
+    - law
+    - regulation
+    - implementation
+    - evaluation
+    - result
+    - conclusion
+    - recommendation
+    - anchovy
+    - anchoveta
+    - small pelagic
+    - forage fish
+
+principles:
+  - Full-text screening revises rather than automatically confirms title-and-abstract decisions.
+  - A source is included only when every scope criterion is yes and the text is sufficient for verification.
+  - Lack of access or unreadable text is not an eligibility exclusion.
+  - Every completed decision must contain a concise basis and page locator.
+  - Model-assisted decisions remain not_reviewed until a human accepts or corrects them.
+  - Representative prompt packets support triage but do not replace inspection of the complete document.
