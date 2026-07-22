@@ -1,0 +1,81 @@
+parsing_stage: document_parsing
+
+paths:
+  manifest_csv: data/interim/full_text_manifest.csv
+  inventory_csv: data/interim/document_inventory.csv
+  page_text_csv: data/interim/pdf_page_text.csv
+  page_diagnostics_csv: data/interim/pdf_page_diagnostics.csv
+  sections_csv: data/interim/document_sections.csv
+  chunks_csv: data/interim/document_chunks.csv
+  errors_csv: data/interim/document_parsing_errors.csv
+  issues_csv: data/interim/document_parsing_issues.csv
+  ocr_queue_csv: data/interim/documents_requiring_ocr.csv
+  screening_corpus_csv: data/interim/full_text_screening_corpus.csv
+  text_dir: data/processed/text
+
+validation:
+  verify_pdf_signature: true
+  verify_checksum: true
+  strict_checksum: true
+
+page_diagnostics:
+  minimum_page_characters: 80
+  scanned_document_threshold: 0.50
+  minimum_document_characters: 500
+
+text_cleaning:
+  remove_null_bytes: true
+  unicode_normalization: NFKC
+  dehyphenate_line_breaks: true
+  preserve_paragraphs: true
+
+section_detection:
+  heading_max_characters: 180
+  heading_max_words: 18
+  heading_keywords:
+    - abstract
+    - summary
+    - executive summary
+    - resumen
+    - résumé
+    - introduction
+    - introducción
+    - background
+    - antecedentes
+    - methods
+    - methodology
+    - materials and methods
+    - métodos
+    - metodología
+    - data
+    - results
+    - resultados
+    - discussion
+    - discusión
+    - conclusions
+    - conclusion
+    - conclusiones
+    - recommendations
+    - recomendaciones
+    - references
+    - bibliography
+    - referencias
+    - annex
+    - appendix
+    - anexo
+    - acknowledgements
+    - acknowledgments
+    - agradecimientos
+
+chunking:
+  target_characters: 4000
+  overlap_characters: 500
+  minimum_chunk_characters: 300
+  minimum_break_fraction: 0.60
+
+principles:
+  - Preserve source_id, checksum, local path, page numbers, and extraction status.
+  - Never apply OCR automatically; only flag documents that may require OCR.
+  - Do not silently replace, repair, or reinterpret source text.
+  - Keep page-level extraction errors and continue with other documents.
+  - Treat section detection as a conservative navigation aid, not a verified semantic label.
