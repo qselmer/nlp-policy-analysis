@@ -1,0 +1,90 @@
+canonical_fields:
+  - title
+  - authors_or_organisation
+  - publisher
+  - year
+  - version_date
+  - source_type
+  - source_subtype
+  - source_status
+  - doi
+  - primary_url
+  - landing_page_url
+  - abstract
+  - source_language
+
+platforms:
+  generic:
+    title: [title, document_title, article_title]
+    authors_or_organisation: [authors, author, creator, authors_or_organisation]
+    publisher: [publisher, journal, source_title, publication_name]
+    year: [year, publication_year, cover_year]
+    version_date: [version_date, publication_date, date]
+    source_type: [source_type, type]
+    source_subtype: [source_subtype, document_type]
+    source_status: [source_status, status]
+    doi: [doi]
+    primary_url: [primary_url, url, link]
+    landing_page_url: [landing_page_url, landing_page]
+    abstract: [abstract, description, summary]
+    source_language: [source_language, language]
+
+  scopus:
+    title: [Title]
+    authors_or_organisation: [Authors, Author full names]
+    publisher: [Source title, Publisher]
+    year: [Year]
+    version_date: [Cover Date, Publication Date]
+    source_type: [Source Type]
+    source_subtype: [Document Type]
+    source_status: [Publication Stage]
+    doi: [DOI]
+    primary_url: [Link]
+    landing_page_url: [EID]
+    abstract: [Abstract]
+    source_language: [Language of Original Document, Language]
+
+  web_of_science:
+    title: [Article Title, Title]
+    authors_or_organisation: [Authors, Author Full Names]
+    publisher: [Source Title, Publisher]
+    year: [Publication Year, Year Published]
+    version_date: [Publication Date]
+    source_type: [Document Type]
+    source_subtype: [Document Type]
+    source_status: [Early Access Date]
+    doi: [DOI]
+    primary_url: [DOI Link, URL]
+    landing_page_url: [UT (Unique WOS ID)]
+    abstract: [Abstract]
+    source_language: [Language]
+
+  openalex:
+    title: [title, display_name]
+    authors_or_organisation: [authorships, authors]
+    publisher: [primary_location.source.display_name, host_venue.display_name, publisher]
+    year: [publication_year, year]
+    version_date: [publication_date]
+    source_type: [type]
+    source_subtype: [type_crossref]
+    source_status: [open_access.oa_status]
+    doi: [doi]
+    primary_url: [primary_location.landing_page_url, id]
+    landing_page_url: [primary_location.landing_page_url]
+    abstract: [abstract, abstract_inverted_index]
+    source_language: [language]
+
+  crossref:
+    title: [title]
+    authors_or_organisation: [author, authors]
+    publisher: [publisher, container-title]
+    year: [published-print, published-online, year]
+    version_date: [created, published]
+    source_type: [type]
+    source_subtype: [subtype]
+    source_status: [status]
+    doi: [DOI, doi]
+    primary_url: [URL, url]
+    landing_page_url: [resource.primary.URL]
+    abstract: [abstract]
+    source_language: [language]
