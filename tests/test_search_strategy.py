@@ -2,7 +2,12 @@ from pathlib import Path
 
 import pytest
 
-from evidence_review.search import build_query, build_standard_queries, load_search_strategy
+from evidence_review.search import (
+    build_query,
+    build_standard_queries,
+    load_search_strategy,
+    standard_queries_to_records,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,3 +52,18 @@ def test_unknown_language_is_rejected():
             blocks=("climate", "fisheries"),
             query_type="broad",
         )
+
+
+def test_planned_query_records_are_stable_and_unique():
+    strategy = load_search_strategy(STRATEGY_PATH)
+    queries = build_standard_queries(strategy)
+    records = standard_queries_to_records(queries)
+
+    query_ids = [record["query_id"] for record in records]
+    assert len(records) == 8
+    assert len(query_ids) == len(set(query_ids))
+    assert {record["query_type"] for record in records} == {
+        "broad",
+        "priority_taxa",
+    }
+    assert all(record["exact_query"] for record in records)
