@@ -1,0 +1,179 @@
+review_stage: title_abstract
+
+operational_rule:
+  include: all_three_criteria_yes
+  exclude: at_least_one_criterion_clearly_no
+  uncertain: at_least_one_criterion_unclear_and_no_definitive_exclusion
+
+eligibility_criteria:
+  fisheries_or_marine_relevant:
+    question: Does the title or abstract concern marine fisheries, fishery governance, marine capture species, forage fish, small pelagics, or a directly relevant marine ecosystem?
+    yes_examples:
+      - marine capture fishery
+      - stock assessment or fishery management
+      - small pelagic or forage-fish ecology linked to fisheries
+      - marine governance or adaptation with an explicit fisheries connection
+    no_examples:
+      - freshwater-only fishery
+      - aquaculture-only study without transferability to marine capture fisheries
+      - terrestrial or agricultural system
+
+  climate_environment_or_adaptation_element:
+    question: Does the source contain a climate, environmental variability, extreme-event, ecosystem, precautionary, adaptation, resilience, or climate-risk element?
+    yes_examples:
+      - climate change or climate projection
+      - ENSO, marine heatwave, regime shift, warming, acidification, deoxygenation
+      - environmental drivers linked to stock, fishery, governance, or management response
+      - precautionary or adaptive management explicitly motivated by environmental uncertainty
+    no_examples:
+      - fisheries study with no environmental, ecosystem, climate, adaptation, or resilience component
+      - climate mitigation with no fisheries or marine-resource connection
+
+  contributes_codable_evidence:
+    question: Does the title or abstract indicate at least one result, projection, mechanism, method, management measure, evaluation, recommendation, implementation lesson, policy commitment, or evidence gap that can be coded?
+    yes_examples:
+      - empirical relationship or model result
+      - projected biological or fishery response
+      - management or governance mechanism
+      - evaluated project, programme, plan, policy, law, protocol, or adaptation option
+      - reproducible method, indicator, framework, or dataset
+    no_examples:
+      - editorial, announcement, or record with no substantive content
+      - source for which neither title nor abstract identifies a codable contribution
+
+criterion_values:
+  - yes
+  - no
+  - unclear
+
+decisions:
+  - include
+  - exclude
+  - uncertain
+
+exclusion_reasons:
+  - freshwater_only
+  - aquaculture_only
+  - terrestrial_only
+  - not_marine_or_fisheries
+  - no_climate_environment_adaptation_element
+  - no_codable_evidence
+  - climate_mitigation_without_fisheries_link
+  - outside_date_range
+  - duplicate_record
+  - publication_type_not_eligible
+  - other_scope_exclusion
+
+priority_groups:
+  - anchoveta_direct
+  - small_pelagics_or_forage_fish
+  - marine_fisheries
+  - management_governance
+  - climate_hazard
+  - ecological_response
+  - fishery_response
+  - management_option
+  - implementation_project
+  - policy_legal
+  - methods_data
+  - socioeconomic_adaptation
+
+human_validation_status:
+  - not_reviewed
+  - accepted
+  - corrected
+  - rejected
+
+# These terms are diagnostic only. They prioritise manual review and must never
+# be used as an automatic eligibility rule.
+diagnostic_terms:
+  climate_environment:
+    - climate change
+    - climate variability
+    - environmental variability
+    - ocean warming
+    - marine heatwave
+    - marine heatwaves
+    - ENSO
+    - El Nino
+    - El Niño
+    - La Nina
+    - La Niña
+    - acidification
+    - deoxygenation
+    - hypoxia
+    - regime shift
+    - regime shifts
+    - climate risk
+    - adaptation
+    - resilience
+    - precautionary
+    - ecosystem approach
+    - environmental driver
+    - environmental drivers
+    - cambio climatico
+    - cambio climático
+    - variabilidad ambiental
+    - calentamiento oceanico
+    - calentamiento oceánico
+    - acidificacion
+    - acidificación
+    - desoxigenacion
+    - desoxigenación
+    - adaptacion
+    - adaptación
+    - resiliencia
+
+  fisheries_marine:
+    - fisher*
+    - fishery management
+    - fisheries management
+    - stock assessment
+    - harvest strategy
+    - harvest control rule
+    - catch limit
+    - quota
+    - marine resource
+    - marine ecosystem
+    - marine governance
+    - capture fishery
+    - pesca
+    - pesqueria
+    - pesquería
+    - manejo pesquero
+    - gestion pesquera
+    - gestión pesquera
+    - evaluacion de stock
+    - evaluación de stock
+    - cuota
+
+  priority_taxa:
+    - small pelagic
+    - small pelagics
+    - forage fish
+    - anchov*
+    - anchovy
+    - anchoveta
+    - Engraulis ringens
+    - sardine
+    - sardina
+    - herring
+    - arenque
+    - capelin
+    - capelan
+    - capelán
+    - mackerel
+    - caballa
+    - horse mackerel
+    - jack mackerel
+    - jurel
+    - menhaden
+
+  possible_exclusions:
+    - freshwater
+    - river
+    - lake
+    - aquaculture
+    - farmed fish
+    - terrestrial
+    - agriculture
