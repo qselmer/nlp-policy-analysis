@@ -41,10 +41,11 @@ eligibility_criteria:
       - editorial, announcement, or record with no substantive content
       - source for which neither title nor abstract identifies a codable contribution
 
+# Quote YAML 1.1 boolean-like words so PyYAML loads strings, not True/False.
 criterion_values:
-  - yes
-  - no
-  - unclear
+  - "yes"
+  - "no"
+  - "unclear"
 
 decisions:
   - include
