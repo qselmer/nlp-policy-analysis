@@ -1,0 +1,145 @@
+project:
+  name: Global fisheries climate-regulation evidence map
+  focal_fishery: North-central Peruvian anchoveta (Engraulis ringens)
+  primary_question: >-
+    Which legal instruments, policies, and fishery management plans explicitly
+    incorporate environmental variability or climate change, and which
+    operational mechanisms could inform adaptive management of Peruvian anchoveta?
+
+screening:
+  include_when:
+    - The source is an official legal, regulatory, policy, strategy, or management instrument.
+    - The source applies to marine fisheries, fishery governance, or a relevant marine ecosystem.
+    - The source contains at least one climate, environmental-variability, precautionary, ecosystem, or adaptive-management element.
+  exclude_when:
+    - The source is only academic commentary without an official instrument being analysed.
+    - The source concerns only aquaculture, inland fisheries, or terrestrial policy.
+    - The source contains no fishery-management or governance mechanism.
+  priority_groups:
+    - small_pelagics
+    - pelagics
+    - short_lived_species
+    - forage_fish
+    - climate_sensitive_fisheries
+
+legal_status:
+  - binding
+  - partially_binding
+  - non_binding
+  - unclear
+
+instrument_type:
+  - international_agreement
+  - regional_measure
+  - national_law
+  - regulation
+  - fishery_management_plan
+  - harvest_strategy
+  - policy
+  - adaptation_plan
+  - technical_protocol
+  - scientific_advice
+  - other
+
+fishery_scope:
+  - general_fisheries
+  - ecosystem
+  - pelagics
+  - small_pelagics
+  - forage_fish
+  - species_specific
+  - fleet_specific
+
+climate_integration_level:
+  0: absent
+  1: declarative_mention
+  2: mandatory_risk_assessment
+  3: environmental_indicators_in_advice
+  4: indicators_linked_to_operational_decisions
+
+principles:
+  - precautionary_approach
+  - ecosystem_approach
+  - adaptive_management
+  - climate_risk_management
+  - best_available_science
+  - intergenerational_equity
+  - participatory_governance
+
+management_measures:
+  - catch_limit
+  - harvest_control_rule
+  - effort_control
+  - seasonal_closure
+  - spatial_closure
+  - dynamic_closure
+  - juvenile_protection
+  - spawning_protection
+  - quota_revision_in_season
+  - emergency_measure
+  - capacity_control
+  - ecosystem_reference_point
+  - climate_risk_assessment
+  - management_strategy_evaluation
+  - mandatory_review
+  - monitoring_requirement
+  - bycatch_measure
+  - other
+
+trigger_types:
+  - biomass
+  - fishing_mortality
+  - recruitment
+  - juvenile_incidence
+  - reproductive_activity
+  - environmental_indicator
+  - climate_index
+  - spatial_distribution
+  - ecosystem_indicator
+  - uncertainty
+  - climate_projection
+  - other
+
+response_type:
+  - automatic
+  - semi_automatic
+  - discretionary
+  - advisory
+  - not_specified
+
+transferability_components:
+  ecological_similarity:
+    0: unrelated
+    1: marine_fishery
+    2: pelagic_or_short_lived
+    3: small_pelagic_or_anchovy
+  climate_operationalisation:
+    0: absent
+    1: declarative
+    2: assessed
+    3: linked_to_decisions
+  trigger_specificity:
+    0: absent
+    1: qualitative
+    2: quantitative
+  response_predefinition:
+    0: absent
+    1: discretionary
+    2: predefined
+  legal_force:
+    0: voluntary
+    1: policy_or_partial
+    2: binding
+  data_feasibility_peru:
+    0: unavailable
+    1: partially_available
+    2: routinely_available
+
+validation:
+  require_official_source: true
+  require_exact_article_or_section: true
+  require_supporting_excerpt: true
+  prohibit_inference_from_missing_text: true
+  human_review_all_included_documents: true
+  human_review_all_binding_claims: true
+  human_review_all_high_transferability_cases: true
