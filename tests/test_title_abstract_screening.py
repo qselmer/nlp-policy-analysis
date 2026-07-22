@@ -53,6 +53,13 @@ def _retained_frame() -> pd.DataFrame:
     )
 
 
+def test_screening_config_criterion_values_are_strings():
+    config = load_screening_config(CONFIG_PATH)
+
+    assert config["criterion_values"] == ["yes", "no", "unclear"]
+    assert all(isinstance(value, str) for value in config["criterion_values"])
+
+
 def test_include_requires_three_yes():
     record = TitleAbstractScreening(
         source_id="src_001",
