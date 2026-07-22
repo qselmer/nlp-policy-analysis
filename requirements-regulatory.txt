@@ -1,0 +1,31 @@
+# Core data workflow
+pandas>=2.2
+numpy>=1.26
+pyarrow>=16.0
+openpyxl>=3.1
+pyyaml>=6.0
+pydantic>=2.7
+python-dotenv>=1.0
+
+# Document parsing
+pypdf>=4.2
+beautifulsoup4>=4.12
+lxml>=5.2
+requests>=2.32
+
+# NLP and retrieval
+scikit-learn>=1.5
+sentence-transformers>=3.0
+faiss-cpu>=1.8
+
+# LLM client
+openai>=1.40
+
+# Analysis and validation
+matplotlib>=3.9
+pytest>=8.2
+jsonschema>=4.23
+
+# Notebook environment
+jupyterlab>=4.2
+ipykernel>=6.29
