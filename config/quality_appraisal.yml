@@ -1,0 +1,170 @@
+appraisal_stage: source_quality
+
+taxonomy_path: config/taxonomy.yml
+
+paths:
+  sources_csv: data/interim/full_text_included.csv
+  findings_csv: data/interim/structured_findings_validated.csv
+  corpus_csv: data/interim/evidence_extraction_corpus.csv
+  appraisal_working_csv: data/interim/quality_appraisal_working.csv
+  packets_csv: data/interim/quality_appraisal_packets.csv
+  prompts_jsonl: data/interim/quality_appraisal_prompts.jsonl
+  model_responses_jsonl: data/interim/quality_appraisal_model_responses.jsonl
+  issues_csv: data/interim/quality_appraisal_issues.csv
+  appraisal_csv: data/interim/quality_appraisal.csv
+  validated_appraisal_csv: data/interim/quality_appraisal_validated.csv
+  pending_validation_csv: data/interim/quality_appraisal_pending_validation.csv
+  rejected_appraisal_csv: data/interim/quality_appraisal_rejected.csv
+  finding_quality_link_csv: data/interim/finding_quality_link.csv
+  source_summary_csv: data/interim/source_quality_summary.csv
+  flow_summary_csv: data/interim/quality_appraisal_flow.csv
+
+appraisal_statuses:
+  - pending
+  - completed
+  - insufficient_text
+  - appraisal_error
+
+human_validation_status:
+  - not_reviewed
+  - accepted
+  - corrected
+  - rejected
+
+overall_ratings:
+  - low
+  - moderate
+  - high
+  - not_applicable
+
+score_values:
+  0: absent_or_seriously_inadequate
+  1: partial_or_unclear
+  2: adequate_and_traceable
+
+rating_thresholds:
+  moderate_minimum: 0.50
+  high_minimum: 0.80
+
+source_type_to_domain:
+  scientific_article: scientific
+  systematic_review: scientific
+  book_chapter: scientific
+  book: scientific
+  thesis_or_dissertation: scientific
+  conference_paper: scientific
+  dataset_or_data_paper: scientific
+  scientific_advice: technical_report
+  stock_assessment: technical_report
+  technical_report: technical_report
+  institutional_report: technical_report
+  technical_protocol: technical_report
+  guideline_or_manual: technical_report
+  project_document: project
+  project_evaluation: project
+  policy: policy_and_plan
+  strategy: policy_and_plan
+  adaptation_plan: policy_and_plan
+  fishery_management_plan: policy_and_plan
+  harvest_strategy: policy_and_plan
+  international_agreement: legal
+  regional_measure: legal
+  national_law: legal
+  regulation: legal
+  other: scientific
+
+criteria:
+  common:
+    source_authenticity: The source identity, version, provenance, and publication status are clear.
+    evidence_traceability: Claims can be traced to identifiable pages, sections, tables, figures, or annexes.
+    objective_clarity: The objective, question, mandate, or intended function is explicit.
+    limitation_transparency: Important limitations, caveats, or scope conditions are disclosed.
+    uncertainty_treatment: Uncertainty is identified, quantified, explored, or otherwise handled transparently.
+
+  scientific:
+    design_appropriateness: The study design is suitable for the stated question and inferential claims.
+    data_adequacy: Data coverage, sample size, temporal or spatial extent, and resolution are adequate.
+    methodological_transparency: Methods, variables, assumptions, and analytical steps are sufficiently described.
+    validation_or_sensitivity: Validation, diagnostics, robustness checks, sensitivity analysis, or uncertainty propagation are reported.
+    reproducibility: Data, code, equations, parameterization, or procedural detail permit meaningful reproduction.
+    conclusion_support: Conclusions are proportional to and supported by the reported results.
+
+  technical_report:
+    institutional_authority: The issuing institution, mandate, and technical responsibility are identifiable.
+    data_coverage: Monitoring, survey, assessment, or administrative data coverage is documented and adequate for the purpose.
+    method_transparency: Technical methods, calculations, assumptions, and decision procedures are described.
+    review_process: Internal, external, expert, stakeholder, or statutory review is documented.
+    indicator_clarity: Indicators, reference points, thresholds, or performance measures are defined and interpretable.
+    conclusion_support: Advice or conclusions are supported by the reported analyses and evidence.
+
+  project:
+    theory_of_change: Activities, outputs, outcomes, impacts, and causal assumptions are distinguished and connected.
+    baseline_quality: Baseline conditions and counterfactual or comparison logic are sufficiently described.
+    indicator_quality: Indicators are specific, measurable, temporally defined, and aligned with intended outcomes.
+    evaluation_design: The evaluation design can distinguish implementation from outcomes and plausible attribution.
+    outcome_evidence: Evidence extends beyond activities or outputs to evaluated changes in outcomes or impacts.
+    sustainability_and_scalability: Continuation, institutionalization, financing, transferability, or scaling conditions are assessed.
+
+  policy_and_plan:
+    mandate_and_scope: Authority, geographic or sectoral scope, target population, and policy purpose are explicit.
+    responsibility_assignment: Implementing entities, roles, coordination, and accountability are specified.
+    financing_and_capacity: Financial, technical, staffing, and institutional capacity requirements are addressed.
+    timeline_and_targets: Timelines, milestones, targets, or review dates are measurable and explicit.
+    monitoring_and_review: Monitoring indicators, reporting, evaluation, and revision mechanisms are defined.
+    operational_mechanisms: Measures, procedures, triggers, instruments, or implementation pathways are operationally specified.
+
+  legal:
+    official_version: The official text, adoption date, amendments, and current version are identifiable.
+    legal_force_clarity: Binding force, legal status, and relationship to subordinate or superior instruments are clear.
+    jurisdiction_and_scope: Jurisdiction, regulated actors, species, fisheries, waters, and temporal scope are explicit.
+    authority_and_duties: Competent authorities, powers, obligations, prohibitions, and discretion are specified.
+    trigger_and_response_specificity: Conditions, thresholds, procedures, timelines, and required responses are operationally defined.
+    implementation_evidence: Compliance, enforcement, monitoring, review, or implementation evidence is reported or clearly absent.
+
+packet_selection:
+  max_chunks_per_source: 18
+  max_characters_per_source: 65000
+  edge_chunks: 2
+  spread_chunks: 5
+  keyword_terms:
+    - method
+    - methods
+    - methodology
+    - data
+    - sample
+    - uncertainty
+    - sensitivity
+    - validation
+    - limitation
+    - limitations
+    - discussion
+    - conclusion
+    - conclusions
+    - implementation
+    - monitoring
+    - evaluation
+    - results
+    - governance
+    - review
+    - appendix
+    - annex
+
+validation:
+  require_all_domain_criteria_for_completed: true
+  require_note_for_scored_criterion: true
+  require_locator_for_scored_criterion: true
+  require_explicit_page_locator: true
+  minimum_note_characters: 12
+  minimum_summary_characters: 20
+  enforce_calculated_scores: true
+  require_human_review_for_final_use: true
+
+principles:
+  - Appraise methodological quality separately from legal authority, policy relevance, and transferability.
+  - Do not use journal prestige, citation counts, or institutional reputation as substitutes for evidence quality.
+  - A source can be highly relevant but methodologically weak, or methodologically strong but only indirectly transferable.
+  - Absence of implementation evidence is not equivalent to evidence of failed implementation.
+  - Project activities and outputs are not outcomes or impacts without evaluated change.
+  - Recommendations and projections are not observed effectiveness evidence.
+  - Every criterion score requires a concise justification and an exact source locator.
+  - Model-assisted appraisals remain not_reviewed until a human accepts or corrects them.
