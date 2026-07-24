@@ -23,6 +23,7 @@ The extension does **not** replace or modify the original tutorial notebooks. It
 
 Start with:
 
+- `NOTEBOOK_WORKFLOW.md` for the execution order, inputs, human-review points, outputs, stop/go criteria, and source-update routes;
 - `REGULATORY_REVIEW.md` for the methodological design;
 - `notebooks/01_build_evidence_corpus.ipynb` for the general evidence corpus;
 - `notebooks/01_build_regulatory_corpus.ipynb` for the specialised legal and operational subcorpus;
