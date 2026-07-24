@@ -1,0 +1,148 @@
+project:
+  name: Global climate-fisheries evidence map
+  target_fishery: North-central Peruvian anchoveta (Engraulis ringens)
+  purpose: >-
+    Convert validated finding-level evidence and transferability assessments into an
+    auditable portfolio of decision-support candidates. Outputs are candidates for
+    expert review and must not be interpreted as automatic management advice.
+
+taxonomy_path: config/taxonomy.yml
+
+paths:
+  synthesis_matrix_csv: data/interim/evidence_synthesis_matrix.csv
+  synthesis_theme_summary_csv: data/interim/synthesis_theme_summary.csv
+  management_option_summary_csv: data/interim/management_option_summary.csv
+  evidence_gap_matrix_csv: data/interim/evidence_gap_matrix.csv
+  recommendation_candidates_csv: data/interim/recommendation_candidates.csv
+  transferability_validated_csv: data/interim/transferability_assessment_validated.csv
+  recommendation_review_working_csv: data/interim/anchoveta_recommendation_review_working.csv
+  chains_csv: data/interim/climate_response_management_chains.csv
+  management_portfolio_csv: data/interim/management_option_portfolio.csv
+  operational_readiness_csv: data/interim/operational_readiness_matrix.csv
+  research_priority_csv: data/interim/research_priority_matrix.csv
+  recommendation_framework_csv: data/interim/anchoveta_recommendation_framework.csv
+  recommendation_validated_csv: data/interim/anchoveta_recommendation_framework_validated.csv
+  recommendation_pending_csv: data/interim/anchoveta_recommendation_framework_pending_review.csv
+  recommendation_rejected_csv: data/interim/anchoveta_recommendation_framework_rejected.csv
+  decision_summary_csv: data/interim/decision_support_summary.csv
+  issues_csv: data/interim/decision_support_issues.csv
+
+chain_classes:
+  - complete_management_chain
+  - climate_ecological_fishery_chain
+  - climate_ecological_chain
+  - management_link_without_full_pressure_response
+  - partial_chain
+  - uncoupled_finding
+
+decision_pathways:
+  - operational_integration_candidate
+  - bounded_pilot_candidate
+  - mse_or_scenario_candidate
+  - monitoring_candidate
+  - research_priority
+  - contextual_only
+
+readiness_classes:
+  - not_ready
+  - evidence_development
+  - pilot_ready
+  - decision_support_ready
+
+research_priority_classes:
+  - low
+  - moderate
+  - high
+
+expert_review_statuses:
+  - not_reviewed
+  - accepted
+  - corrected
+  - rejected
+
+readiness_scoring:
+  maximum_score: 13
+  evidence_coverage:
+    maximum: 2
+    one_point_minimum_findings: 2
+    two_point_minimum_findings: 5
+    two_point_minimum_sources: 3
+  source_quality:
+    maximum: 2
+    one_point_minimum_high_quality: 1
+    two_point_minimum_high_quality_share: 0.50
+  transferability:
+    maximum: 2
+    one_point_minimum_mean: 0.50
+    two_point_minimum_mean: 0.75
+  implementation_maturity:
+    maximum: 3
+    proposed_or_planned: 1
+    implemented_or_piloted: 2
+    evaluated: 3
+  operational_specificity:
+    maximum: 2
+    one_point_minimum_mean: 0.75
+    two_point_minimum_mean: 1.50
+  data_feasibility:
+    maximum: 2
+    one_point_minimum_mean: 0.75
+    two_point_minimum_mean: 1.50
+
+readiness_thresholds:
+  evidence_development_minimum: 0.25
+  pilot_ready_minimum: 0.50
+  decision_support_ready_minimum: 0.75
+
+readiness_gates:
+  decision_support_ready:
+    minimum_evaluated_implementation: 1
+    minimum_mean_operational_specificity: 1.0
+    minimum_mean_data_feasibility: 1.0
+  pilot_ready:
+    minimum_mean_data_feasibility: 1.0
+    minimum_mean_operational_specificity: 0.75
+
+research_priority_scoring:
+  explicit_source_gap: 3
+  implementation_evidence_missing: 2
+  peru_data_feasibility_low: 2
+  climate_link_missing: 1
+  low_transferability: 1
+  high_transferability_bonus: 1
+  high_quality_bonus: 1
+  moderate_minimum: 3
+  high_minimum: 6
+
+recommendation_rules:
+  minimum_transferability_for_candidate:
+    - moderate
+    - high
+  permitted_candidate_uses:
+    - direct_operational_input
+    - management_option
+    - monitoring_indicator
+    - scenario_or_operating_model
+    - research_design
+  prohibited_claim_phrases:
+    - proven effective
+    - guarantees success
+    - should be implemented immediately
+    - will increase biomass
+    - will prevent collapse
+  required_conditional_terms:
+    - candidate
+    - assess
+    - test
+    - pilot
+    - evaluate
+    - subject to
+
+validation:
+  require_unique_chain_id: true
+  require_unique_management_option: true
+  require_nonnegative_counts: true
+  require_readiness_score_consistency: true
+  require_conditional_recommendation_language: true
+  require_expert_review_for_all_recommendations: true
+  prohibit_effectiveness_claim_without_evaluated_implementation: true
