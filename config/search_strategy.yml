@@ -1,0 +1,238 @@
+project:
+  review_title: Global climate–fisheries evidence map
+  focal_application: North-central Peruvian anchoveta
+  review_type: systematic_evidence_map
+
+scope:
+  environments:
+    - marine
+    - coastal
+  sectors:
+    - capture_fisheries
+    - fishery_management
+    - marine_governance
+  priority_taxa:
+    - small_pelagics
+    - forage_fish
+    - pelagics
+    - short_lived_fish
+  priority_species:
+    - anchovy
+    - sardine
+    - herring
+    - capelin
+    - mackerel
+    - horse_mackerel
+    - menhaden
+  focal_species:
+    scientific_name: Engraulis ringens
+    common_names:
+      en: [Peruvian anchoveta, anchoveta, anchovy]
+      es: [anchoveta peruana, anchoveta]
+      pt: [anchoveta peruana, anchova]
+      fr: [anchois du Pérou, anchois]
+
+eligibility:
+  date_from: 1990
+  date_to: null
+  languages:
+    - English
+    - Spanish
+    - Portuguese
+    - French
+  include_source_families:
+    - scientific_literature
+    - technical_and_grey_literature
+    - projects_and_programmes
+    - policy_and_management
+    - legal_and_regulatory
+  exclude:
+    - freshwater_only
+    - aquaculture_only
+    - terrestrial_only
+    - climate_mitigation_without_fisheries_link
+    - source_without_retrievable_full_text_or_sufficient_metadata
+
+concept_blocks:
+  climate:
+    en:
+      - '"climate change"'
+      - '"climate variability"'
+      - '"environmental variability"'
+      - '"ocean warming"'
+      - '"marine heatwave*"'
+      - ENSO
+      - '"El Nino"'
+      - '"La Nina"'
+      - acidification
+      - deoxygenation
+      - '"regime shift*"'
+    es:
+      - '"cambio climático"'
+      - '"variabilidad climática"'
+      - '"variabilidad ambiental"'
+      - '"calentamiento oceánico"'
+      - '"olas de calor marinas"'
+      - ENOS
+      - '"El Niño"'
+      - '"La Niña"'
+      - acidificación
+      - desoxigenación
+    pt:
+      - '"mudança climática"'
+      - '"variabilidade climática"'
+      - '"variabilidade ambiental"'
+      - '"aquecimento oceânico"'
+      - ENOS
+      - '"El Niño"'
+      - '"La Niña"'
+    fr:
+      - '"changement climatique"'
+      - '"variabilité climatique"'
+      - '"variabilité environnementale"'
+      - '"réchauffement océanique"'
+      - ENSO
+      - '"El Niño"'
+      - '"La Niña"'
+
+  fisheries:
+    en:
+      - fisher*
+      - '"fishery management"'
+      - '"fisheries management"'
+      - '"stock assessment"'
+      - '"harvest strategy"'
+      - '"harvest control rule"'
+      - '"ecosystem approach to fisheries"'
+      - '"adaptive management"'
+    es:
+      - pesquer*
+      - '"manejo pesquero"'
+      - '"gestión pesquera"'
+      - '"evaluación de stock"'
+      - '"regla de control de captura"'
+      - '"enfoque ecosistémico de la pesca"'
+      - '"manejo adaptativo"'
+    pt:
+      - pesc*
+      - '"gestão pesqueira"'
+      - '"avaliação de estoque"'
+      - '"regra de controle de captura"'
+      - '"abordagem ecossistêmica"'
+      - '"gestão adaptativa"'
+    fr:
+      - pêche*
+      - '"gestion des pêches"'
+      - '"évaluation des stocks"'
+      - '"règle de contrôle des captures"'
+      - '"approche écosystémique"'
+      - '"gestion adaptative"'
+
+  taxa:
+    en:
+      - '"small pelagic*"'
+      - '"forage fish"'
+      - anchov*
+      - anchovy
+      - sardine
+      - herring
+      - capelin
+      - mackerel
+      - '"horse mackerel"'
+      - menhaden
+      - '"Engraulis ringens"'
+    es:
+      - '"pequeños pelágicos"'
+      - '"peces forrajeros"'
+      - anchoveta
+      - anchoa
+      - sardina
+      - arenque
+      - capelán
+      - caballa
+      - jurel
+      - '"Engraulis ringens"'
+    pt:
+      - '"pequenos pelágicos"'
+      - '"peixes forrageiros"'
+      - anchoveta
+      - anchova
+      - sardinha
+      - arenque
+      - capelim
+      - cavala
+      - carapau
+    fr:
+      - '"petits pélagiques"'
+      - '"poissons fourrage"'
+      - anchois
+      - sardine
+      - hareng
+      - capelan
+      - maquereau
+
+search_channels:
+  scientific_databases:
+    - name: Scopus
+      query_family: bibliographic
+      export_format: csv_or_ris
+    - name: Web of Science
+      query_family: bibliographic
+      export_format: csv_or_ris
+    - name: OpenAlex
+      query_family: bibliographic_api
+      export_format: json_or_csv
+    - name: Crossref
+      query_family: bibliographic_api
+      export_format: json_or_csv
+    - name: Google Scholar
+      query_family: supplementary_snowballing
+      export_format: manual
+
+  institutional_sources:
+    - FAO
+    - IPCC
+    - UNFCCC
+    - CBD
+    - UNEP
+    - World Bank
+    - Inter-American Development Bank
+    - OECD
+    - ICES
+    - NOAA Fisheries
+    - Fisheries and Oceans Canada
+    - Australian Fisheries Management Authority
+    - European Commission and EUR-Lex
+    - GFCM
+    - SPRFMO
+    - NEAFC
+    - NAFO
+    - CCAMLR
+    - IATTC
+    - IMARPE
+    - PRODUCE Peru
+    - MINAM Peru
+    - SUBPESCA Chile
+    - IFOP Chile
+
+query_design:
+  broad_query_blocks:
+    - climate
+    - fisheries
+  priority_query_blocks:
+    - climate
+    - fisheries
+    - taxa
+  operator_within_block: OR
+  operator_between_blocks: AND
+  preserve_exact_query: true
+  record_result_count: true
+  record_search_date: true
+  record_platform_and_filters: true
+
+validation:
+  pilot_target_per_source_family: 5
+  dual_screening_pilot: true
+  prioritise_recall: true
+  benchmark_set_required: true
+  peer_review_search_strategy: true

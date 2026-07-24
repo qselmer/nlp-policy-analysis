@@ -1,0 +1,151 @@
+project:
+  name: Global climate-fisheries evidence map
+  target_fishery: North-central Peruvian anchoveta (Engraulis ringens)
+  target_profile:
+    ecosystem: eastern_boundary_upwelling_system
+    life_history:
+      - small_pelagic
+      - short_lived
+      - environmentally_sensitive
+      - recruitment_variable
+      - spatially_dynamic
+    management_context:
+      - seasonal_assessment_and_advice
+      - acoustic_surveys
+      - fishery_dependent_monitoring
+      - biological_sampling
+      - vessel_tracking
+      - adaptive_spatial_and_temporal_measures
+    governance_context:
+      science_provider: IMARPE
+      management_authority: PRODUCE
+    routinely_available_information:
+      - acoustic_biomass_and_distribution
+      - catch_and_effort
+      - size_composition_and_juvenile_incidence
+      - reproductive_condition
+      - vessel_tracking
+      - sea_surface_temperature_and_enso_indices
+      - selected_oceanographic_indicators
+
+taxonomy_path: config/taxonomy.yml
+
+paths:
+  findings_with_quality_csv: data/interim/finding_quality_link.csv
+  transferability_working_csv: data/interim/transferability_assessment_working.csv
+  prompts_jsonl: data/interim/transferability_assessment_prompts.jsonl
+  model_responses_jsonl: data/interim/transferability_assessment_model_responses.jsonl
+  issues_csv: data/interim/transferability_assessment_issues.csv
+  transferability_csv: data/interim/transferability_assessment.csv
+  validated_transferability_csv: data/interim/transferability_assessment_validated.csv
+  pending_validation_csv: data/interim/transferability_assessment_pending_validation.csv
+  rejected_transferability_csv: data/interim/transferability_assessment_rejected.csv
+  synthesis_matrix_csv: data/interim/evidence_synthesis_matrix.csv
+  synthesis_theme_summary_csv: data/interim/synthesis_theme_summary.csv
+  management_option_summary_csv: data/interim/management_option_summary.csv
+  evidence_gap_matrix_csv: data/interim/evidence_gap_matrix.csv
+  recommendation_candidates_csv: data/interim/recommendation_candidates.csv
+  transferability_flow_csv: data/interim/transferability_flow.csv
+
+transferability_statuses:
+  - pending
+  - completed
+  - insufficient_context
+  - assessment_error
+
+human_validation_status:
+  - not_reviewed
+  - accepted
+  - corrected
+  - rejected
+
+transferability_classes:
+  - low
+  - moderate
+  - high
+  - not_applicable
+
+proposed_uses:
+  - direct_operational_input
+  - management_option
+  - monitoring_indicator
+  - scenario_or_operating_model
+  - research_design
+  - contextual_evidence
+  - evidence_gap
+  - not_transferable
+  - unclear
+
+synthesis_roles:
+  - core
+  - supporting
+  - contextual
+  - gap
+  - exclude
+  - unclear
+
+rating_thresholds:
+  moderate_minimum: 0.50
+  high_minimum: 0.75
+
+quality_to_evidence_strength:
+  high: 2
+  moderate: 1
+  low: 0
+  not_applicable: 0
+  unclear: 0
+  "": 0
+
+components:
+  ecological_similarity:
+    maximum: 3
+    description: >-
+      Similarity between the source system and north-central Peruvian anchoveta.
+      Score 0 unrelated; 1 marine fishery; 2 pelagic or short-lived species;
+      3 small pelagic, anchovy, or highly comparable upwelling-system evidence.
+  climate_relevance:
+    maximum: 3
+    description: >-
+      Relevance of the documented climate or environmental mechanism.
+      Score 0 absent; 1 general; 2 explicit driver-response mechanism;
+      3 climate information linked to management decisions or evaluated outcomes.
+  management_relevance:
+    maximum: 2
+    description: >-
+      Relevance to fisheries assessment, advice, governance, or management.
+      Score 0 absent; 1 indirect; 2 direct application.
+  evidence_strength:
+    maximum: 2
+    description: >-
+      Strength inherited from the validated source-quality appraisal.
+      This score is deterministic and must equal the quality-to-score mapping.
+  operational_specificity:
+    maximum: 2
+    description: >-
+      Specificity of triggers, indicators, responsibilities, timing, or actions.
+      Score 0 conceptual; 1 partly specified; 2 predefined, piloted, implemented,
+      or evaluated.
+  data_feasibility_peru:
+    maximum: 2
+    description: >-
+      Feasibility using data and monitoring available for the anchoveta system.
+      Score 0 unavailable; 1 partly available or requiring substantial adaptation;
+      2 routinely available or directly derivable.
+
+validation:
+  minimum_note_characters: 20
+  minimum_summary_characters: 60
+  require_note_for_every_component: true
+  require_complete_scores: true
+  evidence_strength_must_match_quality: true
+  high_transferability_minimums:
+    ecological_similarity: 2
+    climate_relevance: 2
+    management_relevance: 1
+    data_feasibility_peru: 1
+  direct_operational_input_minimums:
+    management_relevance: 2
+    operational_specificity: 1
+    data_feasibility_peru: 1
+  prohibit_effectiveness_inference_without_evaluation: true
+  human_review_all_high_transferability: true

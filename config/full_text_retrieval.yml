@@ -1,0 +1,58 @@
+retrieval_stage: full_text
+
+retrieval_statuses:
+  - available_open_access
+  - available_local
+  - restricted_access
+  - landing_page_only
+  - not_found
+  - retrieval_error
+
+paths:
+  included_csv: data/interim/title_abstract_included.csv
+  uncertain_csv: data/interim/title_abstract_uncertain.csv
+  working_csv: data/interim/full_text_retrieval_working.csv
+  manifest_csv: data/interim/full_text_manifest.csv
+  available_csv: data/interim/full_text_available.csv
+  unavailable_csv: data/interim/full_text_unavailable.csv
+  screening_queue_csv: data/interim/full_text_screening_queue.csv
+  pending_csv: data/interim/full_text_pending.csv
+  errors_csv: data/interim/full_text_retrieval_errors.csv
+  issues_csv: data/interim/full_text_retrieval_issues.csv
+  full_text_dir: data/raw/full_texts
+
+openalex:
+  base_url: https://api.openalex.org
+  api_key_env: OPENALEX_API_KEY
+  timeout_seconds: 30
+  overwrite_resolved: false
+
+download:
+  enabled_by_default: false
+  allowed_schemes:
+    - https
+  accepted_content_types:
+    - application/pdf
+    - application/octet-stream
+  timeout_seconds: 60
+  max_file_size_mb: 100
+  overwrite_existing: false
+  user_agent: nlp-policy-analysis/0.1 full-text-retrieval
+
+manual_actions:
+  - none
+  - verify_landing_page
+  - obtain_through_library
+  - request_author_copy
+  - upload_authorized_local_copy
+  - resolve_missing_doi
+  - resolve_metadata
+  - full_text_screening
+  - other
+
+principles:
+  - Never bypass paywalls, authentication, robots rules, or technical access controls.
+  - Treat a landing page as metadata access, not as full-text availability.
+  - Download only a direct PDF explicitly identified as open access.
+  - Preserve original files and record URL, access date, size, MIME type, and SHA-256.
+  - Keep uncertain title-abstract decisions in a separate full-text screening queue.

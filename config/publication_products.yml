@@ -1,0 +1,144 @@
+project:
+  name: Global climate-fisheries evidence map
+  target_fishery: North-central Peruvian anchoveta (Engraulis ringens)
+  product_title: Climate-fisheries evidence synthesis for north-central Peruvian anchoveta
+  purpose: >-
+    Convert validated evidence, decision-support candidates, and robustness results into
+    reproducible scientific tables, figures, and reports. Publication products must retain
+    the distinctions between proposal, implementation, evaluated outcome, effectiveness,
+    transferability, and analytical stability.
+
+decision_support_config_path: config/decision_support.yml
+robustness_config_path: config/robustness_audit.yml
+
+paths:
+  synthesis_matrix_csv: data/interim/evidence_synthesis_matrix.csv
+  synthesis_theme_summary_csv: data/interim/synthesis_theme_summary.csv
+  transferability_validated_csv: data/interim/transferability_assessment_validated.csv
+  management_portfolio_csv: data/interim/management_option_portfolio.csv
+  operational_readiness_csv: data/interim/operational_readiness_matrix.csv
+  research_priority_csv: data/interim/research_priority_matrix.csv
+  recommendation_validated_csv: data/interim/anchoveta_recommendation_framework_validated.csv
+  decision_support_summary_csv: data/interim/decision_support_summary.csv
+  sensitivity_results_csv: data/interim/sensitivity_scenario_results.csv
+  recommendation_stability_csv: data/interim/recommendation_stability.csv
+  source_influence_csv: data/interim/source_influence_matrix.csv
+  source_concentration_csv: data/interim/source_concentration_summary.csv
+  evidence_independence_csv: data/interim/evidence_independence_summary.csv
+  robustness_summary_csv: data/interim/robustness_summary.csv
+  robustness_issues_csv: data/interim/robustness_issues.csv
+
+  output_root: data/processed/phase13
+  evidence_summary_csv: data/processed/phase13/tables/evidence_summary.csv
+  management_portfolio_table_csv: data/processed/phase13/tables/management_portfolio.csv
+  final_recommendations_csv: data/processed/phase13/tables/final_recommendations.csv
+  research_gaps_csv: data/processed/phase13/tables/research_gaps.csv
+  source_influence_table_csv: data/processed/phase13/tables/source_influence.csv
+  publication_metrics_csv: data/processed/phase13/tables/publication_metrics.csv
+  product_manifest_csv: data/processed/phase13/publication_product_manifest.csv
+  publication_issues_csv: data/processed/phase13/publication_issues.csv
+
+  evidence_flow_png: data/processed/phase13/figures/evidence_flow.png
+  quality_transferability_png: data/processed/phase13/figures/quality_transferability.png
+  management_readiness_png: data/processed/phase13/figures/management_readiness.png
+  recommendation_stability_png: data/processed/phase13/figures/recommendation_stability.png
+  source_concentration_png: data/processed/phase13/figures/source_concentration.png
+  climate_response_management_network_png: data/processed/phase13/figures/climate_response_management_network.png
+
+  evidence_synthesis_report_md: data/processed/phase13/reports/evidence_synthesis_report.md
+  methods_and_results_md: data/processed/phase13/reports/methods_and_results.md
+  executive_decision_brief_md: data/processed/phase13/reports/executive_decision_brief.md
+
+publication_tiers:
+  - conditional_priority
+  - local_validation_priority
+  - scenario_evaluation_required
+  - independent_replication_required
+  - research_or_bounded_pilot
+
+stability_to_publication_tier:
+  robust: conditional_priority
+  generally_stable: local_validation_priority
+  assumption_sensitive: scenario_evaluation_required
+  source_dependent: independent_replication_required
+  insufficiently_supported: research_or_bounded_pilot
+
+publication_tier_order:
+  - conditional_priority
+  - local_validation_priority
+  - scenario_evaluation_required
+  - independent_replication_required
+  - research_or_bounded_pilot
+
+publication_tier_labels:
+  conditional_priority: Conditional priority recommendation
+  local_validation_priority: Priority for local validation
+  scenario_evaluation_required: Scenario or MSE evaluation required
+  independent_replication_required: Independent replication required
+  research_or_bounded_pilot: Research or bounded-pilot candidate
+
+recommendation_next_steps:
+  robust: >-
+    Proceed only through formal IMARPE-PRODUCE review, local performance testing,
+    predefined safeguards, and monitoring; robustness does not establish effectiveness.
+  generally_stable: >-
+    Prioritize local validation and a bounded implementation design before operational use.
+  assumption_sensitive: >-
+    Evaluate under alternative assumptions, operating-model scenarios, or management
+    strategy evaluation before operational progression.
+  source_dependent: >-
+    Obtain independent replication or corroborating evidence before progressing beyond
+    exploratory testing.
+  insufficiently_supported: >-
+    Retain as a research, monitoring, or bounded-pilot candidate until independent-source
+    support and implementation evidence improve.
+
+figure_settings:
+  dpi: 220
+  width_inches: 10
+  height_inches: 6
+  network_top_nodes_per_stage: 6
+  label_wrap_width: 28
+
+report_settings:
+  maximum_recommendations_in_executive_brief: 10
+  maximum_rows_per_markdown_table: 30
+  include_reproducibility_section: true
+
+controlled_values:
+  quality_classes: [high, moderate, low, not_applicable, unclear]
+  transferability_classes: [high, moderate, low, not_applicable]
+  readiness_classes: [not_ready, evidence_development, pilot_ready, decision_support_ready]
+  stability_classes:
+    - robust
+    - generally_stable
+    - assumption_sensitive
+    - source_dependent
+    - insufficiently_supported
+  expert_review_statuses: [accepted, corrected]
+
+language_guardrails:
+  prohibited_claim_phrases:
+    - proven effective
+    - guarantees success
+    - should be implemented immediately
+    - will increase biomass
+    - will prevent collapse
+    - demonstrated effective management
+  required_caveat_terms:
+    - effectiveness
+    - implementation
+    - evaluation
+    - evidence
+
+validation:
+  require_zero_robustness_issues: true
+  require_unique_recommendation_id: true
+  require_unique_option_id: true
+  require_all_validated_recommendations_in_final_table: true
+  require_accepted_or_corrected_recommendations: true
+  require_stability_for_every_recommendation: true
+  require_conditional_language: true
+  require_manifest_for_all_configured_products: true
+  require_nonempty_reports: true
+  minimum_report_characters: 500

@@ -1,0 +1,144 @@
+project:
+  name: Global climate-fisheries evidence map
+  target_fishery: North-central Peruvian anchoveta (Engraulis ringens)
+  purpose: >-
+    Test whether decision-support candidates remain stable under alternative
+    evidence filters, readiness assumptions, and leave-one-source-out analyses.
+    Robustness does not establish effectiveness or justify automatic adoption.
+
+decision_support_config_path: config/decision_support.yml
+
+paths:
+  synthesis_matrix_csv: data/interim/evidence_synthesis_matrix.csv
+  management_portfolio_csv: data/interim/management_option_portfolio.csv
+  recommendation_validated_csv: data/interim/anchoveta_recommendation_framework_validated.csv
+  sensitivity_results_csv: data/interim/sensitivity_scenario_results.csv
+  recommendation_stability_csv: data/interim/recommendation_stability.csv
+  source_influence_csv: data/interim/source_influence_matrix.csv
+  source_concentration_csv: data/interim/source_concentration_summary.csv
+  evidence_independence_csv: data/interim/evidence_independence_summary.csv
+  robust_recommendations_csv: data/interim/robust_recommendations.csv
+  sensitive_recommendations_csv: data/interim/sensitive_recommendations.csv
+  issues_csv: data/interim/robustness_issues.csv
+  summary_csv: data/interim/robustness_summary.csv
+
+readiness_order:
+  - not_ready
+  - evidence_development
+  - pilot_ready
+  - decision_support_ready
+
+stability_classes:
+  - robust
+  - generally_stable
+  - assumption_sensitive
+  - source_dependent
+  - insufficiently_supported
+
+scenarios:
+  base:
+    label: Base specification
+    threshold_shift: 0.00
+    quality_allowed: []
+    transferability_allowed: []
+    implementation_allowed: []
+    finding_types_allowed: []
+    methods_allowed: []
+  conservative:
+    label: Conservative readiness thresholds
+    threshold_shift: 0.10
+    quality_allowed: []
+    transferability_allowed: []
+    implementation_allowed: []
+    finding_types_allowed: []
+    methods_allowed: []
+  permissive:
+    label: Permissive readiness thresholds
+    threshold_shift: -0.10
+    quality_allowed: []
+    transferability_allowed: []
+    implementation_allowed: []
+    finding_types_allowed: []
+    methods_allowed: []
+  high_quality_only:
+    label: High-quality sources only
+    threshold_shift: 0.00
+    quality_allowed: [high]
+    transferability_allowed: []
+    implementation_allowed: []
+    finding_types_allowed: []
+    methods_allowed: []
+  high_transferability_only:
+    label: High-transferability findings only
+    threshold_shift: 0.00
+    quality_allowed: []
+    transferability_allowed: [high]
+    implementation_allowed: []
+    finding_types_allowed: []
+    methods_allowed: []
+  high_quality_and_transferability:
+    label: High quality and high transferability
+    threshold_shift: 0.00
+    quality_allowed: [high]
+    transferability_allowed: [high]
+    implementation_allowed: []
+    finding_types_allowed: []
+    methods_allowed: []
+  observational_only:
+    label: Observational empirical evidence only
+    threshold_shift: 0.00
+    quality_allowed: []
+    transferability_allowed: []
+    implementation_allowed: []
+    finding_types_allowed: [empirical_result, case_study_lesson]
+    methods_allowed:
+      - observational_time_series
+      - before_after
+      - comparative_case_study
+      - qualitative_case_study
+      - mixed_methods
+  implemented_or_evaluated_only:
+    label: Implemented, piloted, or evaluated evidence only
+    threshold_shift: 0.00
+    quality_allowed: []
+    transferability_allowed: []
+    implementation_allowed: [implemented_or_piloted, evaluated]
+    finding_types_allowed: []
+    methods_allowed: []
+
+retention:
+  minimum_readiness_class: evidence_development
+  scenario_presence_counts_as_retained: true
+  leave_one_source_out_presence_counts_as_retained: true
+
+stability_thresholds:
+  robust:
+    minimum_scenario_retention: 0.875
+    minimum_leave_one_source_out_retention: 0.90
+    maximum_top_source_share: 0.50
+    minimum_sources: 3
+  generally_stable:
+    minimum_scenario_retention: 0.75
+    minimum_leave_one_source_out_retention: 0.80
+    maximum_top_source_share: 0.67
+    minimum_sources: 2
+  source_dependent:
+    maximum_leave_one_source_out_retention: 0.60
+    minimum_top_source_share: 0.75
+  insufficiently_supported:
+    maximum_sources: 1
+    maximum_base_readiness_rank: 0
+
+source_concentration:
+  high_concentration_threshold: 0.75
+  moderate_concentration_threshold: 0.50
+  implementation_dependency_share: 1.00
+
+validation:
+  require_all_configured_scenarios: true
+  require_base_scenario: true
+  require_rates_between_zero_and_one: true
+  require_unique_option_scenario_rows: true
+  require_unique_option_source_rows: true
+  require_valid_stability_class: true
+  require_valid_readiness_class: true

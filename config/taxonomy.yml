@@ -1,0 +1,366 @@
+project:
+  name: Global climate-fisheries evidence map
+  focal_fishery: North-central Peruvian anchoveta (Engraulis ringens)
+  primary_question: >-
+    What scientific, technical, operational, project-based, policy, and legal evidence
+    explains climate and environmental risks to marine fisheries, identifies adaptation
+    and management responses, and provides transferable lessons for Peruvian anchoveta?
+
+screening:
+  include_when:
+    - The source concerns marine fisheries, fishery governance, forage fish, small pelagics, or a directly relevant marine ecosystem.
+    - The source contains a climate, environmental-variability, extreme-event, precautionary, ecosystem, adaptation, or resilience component.
+    - The source contributes at least one codable finding, mechanism, method, projection, evaluation, recommendation, or implementation lesson.
+  exclude_when:
+    - The source contains only a generic climate or ocean mention without fisheries relevance.
+    - The source concerns only aquaculture, inland fisheries, or terrestrial policy and provides no explicit transferable mechanism.
+    - The source is a duplicate, superseded version without historical value, abstract-only record, or lacks enough text to verify claims.
+    - No specific finding, provision, result, or project component can be located.
+  priority_groups:
+    - small_pelagics
+    - pelagics
+    - short_lived_species
+    - forage_fish
+    - eastern_boundary_upwelling_systems
+    - climate_sensitive_fisheries
+    - adaptive_fisheries_management
+
+source_type:
+  - international_agreement
+  - regional_measure
+  - national_law
+  - regulation
+  - policy
+  - strategy
+  - adaptation_plan
+  - fishery_management_plan
+  - harvest_strategy
+  - technical_protocol
+  - scientific_advice
+  - stock_assessment
+  - technical_report
+  - institutional_report
+  - project_document
+  - project_evaluation
+  - guideline_or_manual
+  - scientific_article
+  - systematic_review
+  - book_chapter
+  - book
+  - thesis_or_dissertation
+  - conference_paper
+  - dataset_or_data_paper
+  - other
+
+source_status:
+  - official_binding
+  - official_non_binding
+  - official_technical
+  - peer_reviewed
+  - editorially_reviewed
+  - institutional_grey_literature
+  - project_output
+  - preprint
+  - unpublished
+  - unclear
+
+evidence_stream:
+  - climate_hazard
+  - ecological_response
+  - fishery_response
+  - management_option
+  - governance_and_law
+  - implementation_project
+  - socioeconomic_adaptation
+  - methods_and_data
+
+finding_type:
+  - legal_mechanism
+  - policy_commitment
+  - management_measure
+  - empirical_result
+  - model_projection
+  - scenario_result
+  - case_study_lesson
+  - project_activity
+  - project_output
+  - project_outcome
+  - implementation_barrier
+  - implementation_enabler
+  - recommendation
+  - conceptual_framework
+  - method_or_indicator
+  - data_resource
+  - evidence_gap
+  - other
+
+fishery_scope:
+  - general_fisheries
+  - marine_ecosystem
+  - pelagics
+  - small_pelagics
+  - forage_fish
+  - anchovy
+  - sardine
+  - herring
+  - capelin
+  - mackerel
+  - horse_mackerel
+  - menhaden
+  - tuna_or_large_pelagics
+  - multispecies
+  - species_specific
+  - fleet_specific
+
+climate_driver:
+  - ocean_warming
+  - marine_heatwave
+  - enso
+  - climate_regime_shift
+  - ocean_acidification
+  - deoxygenation
+  - sea_level_change
+  - altered_upwelling
+  - altered_currents
+  - stratification
+  - salinity_change
+  - productivity_change
+  - extreme_weather
+  - compound_event
+  - climate_projection
+  - environmental_variability
+  - other
+
+biological_response:
+  - biomass
+  - abundance
+  - productivity
+  - recruitment
+  - natural_mortality
+  - growth
+  - body_condition
+  - reproductive_condition
+  - phenology
+  - size_structure
+  - age_structure
+  - spatial_distribution
+  - depth_distribution
+  - migration
+  - habitat_suitability
+  - trophic_interaction
+  - species_composition
+  - ecosystem_function
+  - other
+
+fishery_response:
+  - catch
+  - fishing_effort
+  - catchability
+  - availability_to_fleet
+  - fishing_ground_shift
+  - season_timing
+  - fleet_distribution
+  - operating_cost
+  - profitability
+  - safety
+  - market_or_value_chain
+  - food_security
+  - employment
+  - conflict_or_access
+  - other
+
+management_measure:
+  - catch_limit
+  - harvest_control_rule
+  - effort_control
+  - seasonal_closure
+  - spatial_closure
+  - dynamic_closure
+  - juvenile_protection
+  - spawning_protection
+  - quota_revision_in_season
+  - emergency_measure
+  - capacity_control
+  - ecosystem_reference_point
+  - climate_risk_assessment
+  - management_strategy_evaluation
+  - mandatory_review
+  - monitoring_requirement
+  - early_warning_system
+  - adaptive_survey_design
+  - dynamic_ocean_management
+  - bycatch_measure
+  - livelihood_diversification
+  - insurance_or_finance
+  - co_management
+  - transboundary_coordination
+  - other
+
+method_or_design:
+  - observational_time_series
+  - experimental
+  - quasi_experimental
+  - before_after
+  - case_control
+  - comparative_case_study
+  - qualitative_case_study
+  - mixed_methods
+  - systematic_review
+  - meta_analysis
+  - species_distribution_model
+  - stock_assessment_model
+  - ecosystem_model
+  - bioeconomic_model
+  - climate_projection_model
+  - management_strategy_evaluation
+  - risk_assessment
+  - legal_analysis
+  - policy_analysis
+  - project_monitoring
+  - project_impact_evaluation
+  - expert_elicitation
+  - conceptual
+  - other
+
+legal_status:
+  - binding
+  - partially_binding
+  - non_binding
+  - unclear
+
+climate_integration_level:
+  0: absent
+  1: declarative_mention
+  2: formal_assessment_or_planning
+  3: environmental_or_climate_information_used_in_advice
+  4: information_linked_to_operational_decisions
+
+principles:
+  - precautionary_approach
+  - ecosystem_approach
+  - adaptive_management
+  - climate_risk_management
+  - best_available_science
+  - intergenerational_equity
+  - participatory_governance
+  - equity_and_justice
+  - resilience
+
+trigger_type:
+  - biomass
+  - fishing_mortality
+  - recruitment
+  - juvenile_incidence
+  - reproductive_activity
+  - environmental_indicator
+  - climate_index
+  - spatial_distribution
+  - ecosystem_indicator
+  - uncertainty
+  - climate_projection
+  - socioeconomic_indicator
+  - implementation_indicator
+  - other
+
+response_type:
+  - automatic
+  - semi_automatic
+  - discretionary
+  - advisory
+  - experimental_or_pilot
+  - not_specified
+
+relevance_level:
+  - direct
+  - indirect_high
+  - indirect_moderate
+  - indirect_low
+  - none
+  - unclear
+
+quality_domains:
+  common:
+    - source_authenticity
+    - evidence_traceability
+    - objective_clarity
+    - limitation_transparency
+    - uncertainty_treatment
+  scientific:
+    - design_appropriateness
+    - data_adequacy
+    - methodological_transparency
+    - validation_or_sensitivity
+    - reproducibility
+    - conclusion_support
+  technical_report:
+    - institutional_authority
+    - data_coverage
+    - method_transparency
+    - review_process
+    - indicator_clarity
+    - conclusion_support
+  project:
+    - theory_of_change
+    - baseline_quality
+    - indicator_quality
+    - evaluation_design
+    - outcome_evidence
+    - sustainability_and_scalability
+  policy_and_plan:
+    - mandate_and_scope
+    - responsibility_assignment
+    - financing_and_capacity
+    - timeline_and_targets
+    - monitoring_and_review
+    - operational_mechanisms
+  legal:
+    - official_version
+    - legal_force_clarity
+    - jurisdiction_and_scope
+    - authority_and_duties
+    - trigger_and_response_specificity
+    - implementation_evidence
+
+quality_score:
+  0: absent_or_seriously_inadequate
+  1: partial_or_unclear
+  2: adequate_and_traceable
+
+transferability_components:
+  ecological_similarity:
+    0: unrelated
+    1: marine_fishery
+    2: pelagic_or_short_lived
+    3: small_pelagic_or_anchovy
+  climate_relevance:
+    0: absent
+    1: general
+    2: explicit_driver_or_response
+    3: climate_information_linked_to_management_or_outcomes
+  management_relevance:
+    0: absent
+    1: indirect
+    2: direct_management_or_governance_application
+  evidence_strength:
+    0: weak_or_unverifiable
+    1: moderate
+    2: strong_and_traceable
+  operational_specificity:
+    0: conceptual_only
+    1: partially_specified
+    2: implemented_or_predefined
+  data_feasibility_peru:
+    0: unavailable
+    1: partially_available
+    2: routinely_available
+
+validation:
+  require_source_locator: true
+  require_supporting_evidence: true
+  prohibit_inference_from_missing_text: true
+  distinguish_source_type_and_authority: true
+  human_review_all_included_sources: true
+  human_review_all_binding_claims: true
+  human_review_all_quantitative_results_used_in_synthesis: true
+  human_review_all_high_transferability_cases: true
+  validate_exclusions_with_stratified_random_sample: true

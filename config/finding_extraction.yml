@@ -1,0 +1,127 @@
+extraction_stage: structured_findings
+
+taxonomy_path: config/taxonomy.yml
+
+paths:
+  corpus_csv: data/interim/evidence_extraction_corpus.csv
+  source_metadata_csv: data/interim/full_text_included.csv
+  queue_working_csv: data/interim/finding_extraction_queue_working.csv
+  findings_working_csv: data/interim/structured_findings_working.csv
+  prompts_jsonl: data/interim/structured_finding_prompts.jsonl
+  model_responses_jsonl: data/interim/structured_finding_model_responses.jsonl
+  issues_csv: data/interim/structured_findings_issues.csv
+  findings_csv: data/interim/structured_findings.csv
+  validated_findings_csv: data/interim/structured_findings_validated.csv
+  pending_validation_csv: data/interim/structured_findings_pending_validation.csv
+  rejected_findings_csv: data/interim/structured_findings_rejected.csv
+  no_finding_chunks_csv: data/interim/chunks_without_codable_findings.csv
+  needs_context_chunks_csv: data/interim/chunks_needing_context.csv
+  extraction_errors_csv: data/interim/chunk_extraction_errors.csv
+  source_summary_csv: data/interim/source_finding_summary.csv
+  flow_summary_csv: data/interim/finding_extraction_flow.csv
+
+extraction_statuses:
+  - pending
+  - findings_extracted
+  - no_codable_finding
+  - needs_more_context
+  - extraction_error
+
+no_finding_reasons:
+  - bibliographic_or_front_matter
+  - methods_without_codable_contribution
+  - repeated_context_only
+  - references_only
+  - insufficient_context
+  - no_climate_fisheries_finding
+  - other
+
+human_validation_status:
+  - not_reviewed
+  - accepted
+  - corrected
+  - rejected
+
+new_controlled_vocabularies:
+  evidence_basis:
+    - observed
+    - experimental
+    - modelled_hindcast
+    - modelled_projection
+    - scenario
+    - legal_text
+    - policy_statement
+    - project_monitoring
+    - recommendation
+    - conceptual
+    - mixed
+    - unclear
+
+  implementation_stage:
+    - not_applicable
+    - proposed
+    - planned
+    - authorized
+    - piloted
+    - implemented
+    - evaluated_activity
+    - evaluated_output
+    - evaluated_outcome
+    - evaluated_impact
+    - unclear
+
+  causal_interpretation:
+    - descriptive
+    - associational
+    - causal
+    - mechanistic_model
+    - normative
+    - unclear
+
+  result_direction:
+    - positive
+    - negative
+    - mixed
+    - null
+    - non_directional
+    - unclear
+
+  deduplication_status:
+    - unique
+    - primary
+    - possible_duplicate
+    - confirmed_duplicate
+
+prompting:
+  max_findings_per_chunk: 6
+  max_excerpt_characters: 1200
+  require_json_only: true
+  include_controlled_vocabularies: true
+
+validation:
+  require_supporting_excerpt: true
+  excerpt_must_match_chunk: true
+  require_page_locator: true
+  page_locator_within_chunk: true
+  minimum_summary_characters: 20
+  maximum_excerpt_characters: 1200
+  coder_confidence_minimum: 0.0
+  coder_confidence_maximum: 1.0
+
+near_duplicate_detection:
+  enabled: true
+  token_jaccard_threshold: 0.82
+  minimum_tokens: 8
+  require_page_overlap_or_adjacency: true
+
+principles:
+  - Extract the smallest independently verifiable finding rather than summarising the entire document.
+  - Preserve source_id, chunk_id, pages, excerpt, and source checksum for every finding.
+  - A recommendation is not an observed result.
+  - A projection or scenario is not an observed trend.
+  - A project activity or output is not an outcome or impact without evaluation evidence.
+  - A proposal, policy commitment, or legal authorization is not proof of implementation or effectiveness.
+  - Correlation is not causation unless the design supports causal interpretation.
+  - Indirect relevance to anchoveta must be labelled and justified.
+  - Overlapping chunks can generate duplicate findings; flag them before synthesis.
+  - Model-assisted findings remain not_reviewed until a human accepts or corrects them.
