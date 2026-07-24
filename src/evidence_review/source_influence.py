@@ -6,6 +6,7 @@ from typing import Mapping
 
 import pandas as pd
 
+from .decision_support_core import stable_id
 from .decision_support_portfolio import build_management_option_portfolio
 from .sensitivity_scenarios import readiness_rank
 
@@ -240,7 +241,7 @@ def build_source_concentration_summary(
         )
         records.append(
             {
-                "option_id": "option_" + __import__("hashlib").sha1(measure.encode("utf-8")).hexdigest()[:12],
+                "option_id": stable_id("option", measure),
                 "management_measure": measure,
                 "findings": len(group),
                 "sources": int(counts.size),
